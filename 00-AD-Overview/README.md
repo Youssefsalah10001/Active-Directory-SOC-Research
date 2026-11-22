@@ -47,6 +47,14 @@ To make sure we are familiar with the basic concepts, here is a quick review of 
 | **NTDS.DIT** | The "heart" of Active Directory. A database stored on the DC at `C:\Windows\NTDS\` that holds user and group objects, group memberships, and, most importantly to attackers, the password hashes of all domain users. |
 
 ---
+## Why This Matters for Security
+
+- **NTDS.DIT** contains the password hashes for the whole domain, so it is a top target after compromising a DC.
+- **SPNs** are the basis of the Kerberoasting attack (covered in the next research).
+- **SYSVOL** and **GPOs** can be abused for persistence or credential discovery.
+- **SIDs, GUIDs, and DNs** are what you will see in logs when investigating an incident as a SOC analyst.
+
+---
 
 ## MSRPC and Windows Management Tools
 
@@ -71,14 +79,6 @@ An **RPC interface** is a set of procedures that a client can call on a server, 
 - MSRPC is a common channel for **remote enumeration and lateral movement** in AD environments.
 - WMI and MMC are legitimate admin tools, so attackers abuse them to blend in with normal activity. This is why a SOC analyst must be able to tell normal admin use from suspicious use.
 
----
-
-## Why This Matters for Security
-
-- **NTDS.DIT** contains the password hashes for the whole domain, so it is a top target after compromising a DC.
-- **SPNs** are the basis of the Kerberoasting attack (covered in the next research).
-- **SYSVOL** and **GPOs** can be abused for persistence or credential discovery.
-- **SIDs, GUIDs, and DNs** are what you will see in logs when investigating an incident as a SOC analyst.
 ---
 
 ## Important network ports in any Windows environment include:
