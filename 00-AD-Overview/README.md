@@ -48,6 +48,31 @@ To make sure we are familiar with the basic concepts, here is a quick review of 
 
 ---
 
+## MSRPC and Windows Management Tools
+
+**MSRPC** is Microsoft's implementation of **Remote Procedure Call (RPC)**, an inter-process communication technique used by client-server applications. Windows systems use MSRPC to access and manage systems in Active Directory.
+
+An **RPC interface** is a set of procedures that a client can call on a server, over the network or across process boundaries, as if they were local calls. It works like a formal contract that defines:
+
+- Procedure names or numbers
+- Input parameters
+- Return types
+- A unique interface identifier (such as a UUID)
+
+### Related Management Technologies
+
+| Technology | Description |
+|---|---|
+| **WMI** (Windows Management Instrumentation) | A subsystem of PowerShell that gives administrators powerful tools for system monitoring. Its goal is to consolidate device and application management across corporate networks. |
+| **MMC** (Microsoft Management Console) | Groups snap-ins (administrative tools) to manage hardware, software, and network components on a Windows host. Administrators can build custom consoles containing only the tools they need, and snap-ins can manage both local and remote systems. |
+
+### Why This Matters for Security
+
+- MSRPC is a common channel for **remote enumeration and lateral movement** in AD environments.
+- WMI and MMC are legitimate admin tools, so attackers abuse them to blend in with normal activity. This is why a SOC analyst must be able to tell normal admin use from suspicious use.
+
+---
+
 ## Why This Matters for Security
 
 - **NTDS.DIT** contains the password hashes for the whole domain, so it is a top target after compromising a DC.
