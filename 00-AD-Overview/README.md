@@ -21,7 +21,6 @@ To make sure we are familiar with the basic concepts, here is a quick review of 
 | **Forest** | A collection of AD trees (and therefore of AD domains). |
 | **Organizational Unit (OU)** | A container used to store similar objects for ease of administration. OUs are often used for delegating administrative tasks without granting a user full administrative rights. |
 | **Group Policy Object (GPO)** | A virtual collection of policy settings. Each GPO has a unique GUID. It can contain local file system settings or AD settings, and can be applied to both user and computer objects. |
-| **Tombstone** | A container object in AD that holds deleted objects. When an object is deleted, it remains here for a set period of time. |
 
 ### Identifiers and Naming
 
@@ -41,7 +40,7 @@ To make sure we are familiar with the basic concepts, here is a quick review of 
 
 | Term | Description |
 |---|---|
-| **FSMO Roles** | Flexible Single Master Operation roles. Microsoft split the responsibilities of a DC into FSMO roles so DCs can keep authenticating users and granting permissions without interruption. They also help replication run smoothly. |
+| **FSMO Roles** | Microsoft separated the various responsibilities that a DC can have into Flexible Single Master Operation (FSMO) roles. These give Domain Controllers (DC) the ability to continue authenticating users and granting permissions without interruption (authorization and authentication). There are five FSMO roles: Schema Master and Domain Naming Master (one of each per forest), Relative ID (RID) Master (one per domain), Primary Domain Controller (PDC) Emulator (one per domain), and Infrastructure Master (one per domain).  These roles help replication in AD to run smoothly and ensure that critical services are operating correctly. |
 | **Global Catalog (GC)** | A domain controller that stores a full copy of all objects in its own domain and a partial copy of objects from other domains in the forest. |
 | **RODC** (Read-Only Domain Controller) | A DC with a read-only AD database. No AD account passwords are cached on it. It also includes a read-only DNS server, allows administrator role separation, reduces replication traffic, and prevents SYSVOL modifications from being replicated to other DCs. |
 | **SYSVOL** | A shared directory on each domain controller. It is crucial for replicating files among all DCs in a domain, using File Replication Services (FRS). |
