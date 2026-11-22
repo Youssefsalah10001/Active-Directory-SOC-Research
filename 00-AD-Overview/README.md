@@ -48,21 +48,24 @@ To make sure we are familiar with the basic concepts, here is a quick review of 
 
 ---
 
-## The Five FSMO Roles
-
-| Role | Scope |
-|---|---|
-| Schema Master | One per forest |
-| Domain Naming Master | One per forest |
-| RID Master (Relative ID) | One per domain |
-| PDC Emulator | One per domain |
-| Infrastructure Master | One per domain |
-
----
-
 ## Why This Matters for Security
 
 - **NTDS.DIT** contains the password hashes for the whole domain, so it is a top target after compromising a DC.
 - **SPNs** are the basis of the Kerberoasting attack (covered in the next research).
 - **SYSVOL** and **GPOs** can be abused for persistence or credential discovery.
 - **SIDs, GUIDs, and DNs** are what you will see in logs when investigating an incident as a SOC analyst.
+---
+
+## Important network ports in any Windows environment include:
+
+| Port | Service |
+|---|---|
+| 53 | DNS |
+| 88 | Kerberos |
+| 135 | WMI/RPC |
+| 137-139 & 445 | SMB |
+| 389 & 636 | LDAP |
+| 3389 | RDB |
+| 5985 & 5986 | PowerShell Remoting (WinRM) |
+
+
